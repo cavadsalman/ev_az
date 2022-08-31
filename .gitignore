@@ -2,3 +2,5 @@ activate.bat
 __pycache__
 .env
 db.sqlite3
+media
+staticfiles
