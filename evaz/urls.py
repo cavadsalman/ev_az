@@ -28,7 +28,8 @@ urlpatterns = [
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 ) + i18n_patterns(
     path('', include('sale.urls')),
-    path('seller/', include('seller.urls'))
+    path('seller/', include('seller.urls')),
+    path('info/', include('info.urls')),
 )
 
 

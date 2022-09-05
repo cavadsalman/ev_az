@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
+    'django_cleanup.apps.CleanupConfig',
     'sale',
     'info',
     'seller',
@@ -129,7 +131,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'staticfiles/'
 STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
@@ -139,11 +140,24 @@ STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ]
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = 'media'
+
 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+AWS_LOCATION = 'media'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+AWS_ACCESS_KEY_ID = getenv('AWS_ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = getenv('AWS_SECRET_KEY')
+AWS_STORAGE_BUCKET_NAME = getenv('AWS_STORAGE_BUCKET_NAME')
+AWS_DEFAULT_ACL = 'public-read'
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+AWS_QUERYSTRING_AUTH = False
+
+MEDIA_URL = f'https://orxan666evazdemo.s3.eu-north-1.amazonaws.com/media/'
+STATIC_URL = f'staticfiles/'
+STATIC_ROOT = f'staticfiles'

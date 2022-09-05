@@ -21,6 +21,9 @@ msgstr ""
 msgid "Azerbaijani"
 msgstr ""
 
+msgid "A user with that username already exists."
+msgstr "Bu istifadeci adi movcuddur!"
+
 #: .\evaz\settings.py:115
 msgid "English"
 msgstr ""

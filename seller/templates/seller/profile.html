@@ -16,7 +16,7 @@
                 <a class="aa-property-home" href="index.html">Property Home</a>
                 <h4>Create your account and Stay with us</h4>
               </div>
-              <form class="contactform" method="post" action="{% url 'seller:register' %}">
+              <form class="contactform" method="post">
                 {% csrf_token %}
                 {{form.non_field_errors}}                                              
                 <div class="aa-single-field">
@@ -39,18 +39,8 @@
                   <label for="email">Email <span class="required">*</span></label>
                   {{form.email}}
                 </div>
-                <div class="aa-single-field">
-                  {{form.password1.errors}}
-                  <label for="password">Password <span class="required">*</span></label>
-                  {{form.password1}}
-                </div>
-                <div class="aa-single-field">
-                  {{form.password2.errors}}
-                  <label for="confirm-password">Confirm Password <span class="required">*</span></label>
-                  {{form.password2}}
-                </div>
                 <div class="aa-single-submit">
-                  <input type="submit" value="Create Account" name="submit">                    
+                  <input type="submit" value="Save Changes" name="submit">                    
                 </div>
               </form>
             </div>
