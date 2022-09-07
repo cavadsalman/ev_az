@@ -21,7 +21,7 @@ class PurchaseType(models.Model):
 class Property(models.Model):
     title = models.CharField(max_length=100)
     price = models.IntegerField()
-    info = models.TextField(max_length=100)
+    info = models.TextField()
     city = models.ForeignKey(City, on_delete=models.SET_NULL, null=True, blank=True)
     video_id = models.CharField(max_length=100, null=True, blank=True)
     kmetr = models.FloatField()
