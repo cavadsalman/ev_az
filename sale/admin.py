@@ -8,6 +8,13 @@ from .models import (
 admin.site.register(City)
 admin.site.register(PropertyType)
 admin.site.register(PurchaseType)
-admin.site.register(Property)
 admin.site.register(PropertyFeature)
-admin.site.register(PorpertyImage)
+
+
+class PropertyImageInline(admin.TabularInline):
+    model = PorpertyImage
+    
+@admin.register(Property)
+class PorpertyAdmin(admin.ModelAdmin):
+    exclude = ['update', 'created']
+    inlines = [PropertyImageInline]
