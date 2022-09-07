@@ -37,6 +37,13 @@ class Property(models.Model):
     def __str__(self):
         return self.title
     
+    def get_main_image(self):
+        result = self.images.filter(main=True).first()
+        if result:
+            return result
+        else:
+            return self.images.first()
+    
 class PropertyFeature(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)

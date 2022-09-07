@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
+    'django_filters',
     'django_cleanup.apps.CleanupConfig',
     'sale',
     'info',
