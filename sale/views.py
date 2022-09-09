@@ -1,12 +1,17 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from .models import Property
+from .models import Property, City
 from .filters import PropertyFilter
 
 # Create your views here.
 
 def home(request):
-    return render(request, 'sale/home.html')
+    pfilter = PropertyFilter()
+    expensive_properties = Property.objects.all().order_by('-price')[:6]
+    return render(request, 'sale/home.html', context={
+        'pfilter': pfilter,
+        'expensive_properties': expensive_properties
+    })
 
 def property_detail(request):
     return render(request, 'sale/property-detail.html')
