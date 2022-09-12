@@ -1,4 +1,7 @@
 from django.db import models
+from django.urls import reverse
+
+from utils.model_utils import make_slug
 
 # Create your models here.
 
@@ -36,6 +39,10 @@ class Property(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse("sale:property-detail", kwargs={'pk': self.pk, 'slug': make_slug(self.title)})
+    
     
     def get_main_image(self):
         result = self.images.filter(main=True).first()

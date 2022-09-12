@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'sale',
     'info',
     'seller',
+    'blog',
 ]
 
 MIDDLEWARE = [
@@ -156,7 +157,6 @@ AWS_ACCESS_KEY_ID = getenv('AWS_ACCESS_KEY')
 AWS_SECRET_ACCESS_KEY = getenv('AWS_SECRET_KEY')
 AWS_STORAGE_BUCKET_NAME = getenv('AWS_STORAGE_BUCKET_NAME')
 AWS_DEFAULT_ACL = 'public-read'
-AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_QUERYSTRING_AUTH = False
 
 MEDIA_URL = f'https://orxan666evazdemo.s3.eu-north-1.amazonaws.com/media/'
