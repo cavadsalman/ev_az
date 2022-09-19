@@ -21,10 +21,15 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls.i18n import i18n_patterns
 from django.shortcuts import render
+from django.views.generic import TemplateView
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticSitemap, PropertySitemap
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path(getenv('ADMIN_URL'), admin.site.urls),
+    path('robots.txt', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
+    path('sitemap.xml', sitemap, {'sitemaps': {'static': StaticSitemap, 'property': PropertySitemap}}, name='django.contrib.sitemaps.views.sitemap')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
 ) + i18n_patterns(
     path('', include('sale.urls')),

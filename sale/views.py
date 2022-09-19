@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import Property, City
 from .filters import PropertyFilter
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -31,3 +32,7 @@ def property_list(request):
         'page_object': page,
         'filter': PropertyFilter
     })
+    
+    
+def example(request, file, extension):
+    return HttpResponse(f'ad: {file}, uzanti: {extension}')
